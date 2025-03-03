@@ -1,0 +1,94 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.carte {
+  width: 300px;
+  height: 500px;
+  border: 5px solid #D9C751;
+  display: flex;
+  flex-direction: column;
+}
+
+/* En-tête */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #FFD700;
+}
+
+.header .niv {
+  font-size: 0.8rem;
+  background: #DCDCDC;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.header .nom {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.header .pv {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.header .pv-num {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.background {
+  flex-grow: 1;
+  position: relative;
+  background-image: url('https://img.playnews.fr/resize?width=1296&height=729&quality=85&imageUrl=https://storage.googleapis.com/playnews-files/2df22b00-88fc-43b7-b073-c6f0b82b6c92.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.description {
+  padding: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  background: #fff;
+  border-top: 2px solid #DCDCDC;
+}
+
+.attaques {
+  padding: 10px;
+}
+
+.attaque {
+  margin-bottom: 10px;
+}
+
+.attaque h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.attaque .type {
+  display: flex;
+  align-items: center;
+}
+
+.attaque .type .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background: #DCDCDC;
+  display: flex;
+  justify-content: center;
+}
+
+.attaque p {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+}
