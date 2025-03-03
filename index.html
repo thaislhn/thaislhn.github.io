@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Pokémon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="genererCarte">Générer une Carte</button>
+
+  <div id="cartesContainer"></div>
+
+  <script>
+    const personnages = [
+      {
+        nom: "Zhu Yuan",
+        description: "Zhu Yuan is a playable Agent in Zenless Zone Zero, and the Leader of the Criminal Investigation.",
+        image: "https://img.playnews.fr/resize?width=1296&height=729&quality=85&imageUrl=https://storage.googleapis.com/playnews-files/2df22b00-88fc-43b7-b073-c6f0b82b6c92.jpg",
+      },
+      {
+        nom: "Nicole",
+        description: "Nicole is a playable Agent in Zenless Zone Zero, and the leader of the Cunning Hares. Arrogant and commanding, she makes up for her attitude with her Ether-powered cannon and grenades, which inflict the Corruption effect.",
+        image: "https://cdn2.unrealengine.com/zenless-zone-zero-characters-agents-guide-1a-3840x2160-6292ead594a3.jpg", 
+      }
+    ];
+
+    const attaquesList = [
+      [
+        { nom: "Buckshot Blast", degat: "1 000", desc: "Shoots Ether Buckshots. Can be repeated 3 times." },
+        { nom: "Full Barrage", degat: "2 000", desc: "Shoots exploding Ether Buckshots." }
+      ],
+      [
+        { nom: "Rapid Strike", degat: "800", desc: "Fast multi-hit combo attack." },
+        { nom: "Ultimate Slash", degat: "2 500", desc: "A powerful sword attack with energy discharge." }
+      ],
+      [
+        { nom: "Thunder Punch", degat: "1 200", desc: "Electric punch that stuns enemies." },
+        { nom: "Lightning Storm", degat: "3 000", desc: "Summons a storm dealing massive damage." }
+      ]
+    ];
+
+    function creerCarte() {
+      let perso = personnages[Math.floor(Math.random() * personnages.length)];
+      let randomAttaque = Math.floor(Math.random() * attaquesList.length);
+
+      const carte = document.createElement("div");
+      carte.classList.add("carte");
+
+      carte.innerHTML = `
+        <div class="header">
+          <div class="gauche">
+            <div class="niv">Ether</div>
+            <div class="nom">${perso.nom}</div>
+          </div>
+          <div class="droite">
+            <div class="pv">PV</div>
+            <div class="pv-num">1000</div>
+          </div>
+        </div>
+
+        <div class="background" style="background-image: url('${perso.image}');">
+          <div class="pokemon"></div>
+        </div>
+
+        <div class="description">
+          ${perso.description}
+        </div>
+
+        <div class="attaques">
+          ${attaquesList[randomAttaque].map(a => `
+            <div class="attaque">
+              <div class="type">
+                <div class="icon">B</div>
+                <h2>${a.nom}</h2>
+              </div>
+              <p>${a.degat}</p>
+              <p class="description-attaque">${a.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      document.getElementById("cartesContainer").innerHTML = "";
+      document.getElementById("cartesContainer").appendChild(carte);
+    }
+
+    document.getElementById("genererCarte").addEventListener("click", creerCarte);
+  </script>
+
+</body>
+</html>
